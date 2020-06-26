@@ -5,36 +5,13 @@ import DishDetail from './DishdetailComponent';
 class Menu extends Component {
     constructor(props) {
         super(props);
-        this.state = {
-            selectedDish:null
-        };
-        console.log('Menucomponent constructor is invoked');
     }
-    componentDidMount(){
-      console.log('Menu component componendidmount is invoked');
-    }
-    onDishSelect(dish){
-      this.setState({selectedDish:dish});
-    }
-
-    renderDish(dish){
-      if(dish!=null){
-        return(
-          <DishDetail dish={dish} onDishSelect={this.onDishSelect}/>
-        );
-      }
-      else{
-        return(
-          <div></div>
-        );
-      }
-    }
-
+   
     render() {
         const menu = this.props.dishes.map((dish) => {
             return (
               <div key={dish.id} class="col-12 col-md-5 m-1">
-                    <Card onClick={() => this.onDishSelect(dish)}>
+                    <Card onClick={()=>this.props.onClick(dish.id)}>
                         <CardImg width="100%" object src={dish.image} alt={dish.name} />
                         <CardImgOverlay>
                             <CardTitle>{dish.name}</CardTitle>
@@ -48,9 +25,6 @@ class Menu extends Component {
           <div className="container">
             <div className="row">
                   {menu}
-            </div>
-            <div className="row">
-            {this.renderDish(this.state.selectedDish)}
             </div>
           </div>
         );
