@@ -49,7 +49,7 @@ import { Card, CardImg, CardImgOverlay,CardText,CardBody,CardTitle } from 'react
             );
         }
         else{
-            return(<div>lijfc</div>);
+            return(<div></div>);
         }
     }        
     
